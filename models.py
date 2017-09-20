@@ -1,14 +1,16 @@
-from apps import *
+from settings import *
+import peewee as models
+import datetime
 
 
-class Clas(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True)
-    email = db.Column(db.String(120), unique=True)
+class BaseModel(models.Model):
+    class Meta:
+        database = db
 
-    def __init__(self, username, email):
-        self.username = username
-        self.email = email
 
-    def __repr__(self):
-        return '<asdf %r>' % self.username
+class accounts(BaseModel):
+    user = models.TextField()
+    pwd = models.TextField()
+
+    def __unicode__(self):
+        return '%s: %s' % (self.user, self.pwd)

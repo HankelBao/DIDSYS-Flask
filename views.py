@@ -1,4 +1,4 @@
-from apps import *
+from settings import *
 from flask import render_template
 
 
